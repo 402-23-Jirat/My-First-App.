@@ -22,7 +22,7 @@ def reset_game():
 
 
 @st.dialog("📊 ง่ายว่ะพี่น้อง")
-def show_result_dialog(ans1, ans2):
+def show_result_dialog(ans1, ans2, ans3, ans4):
     st.balloons()
     score = 0
 
@@ -36,25 +36,26 @@ def show_result_dialog(ans1, ans2):
         st.success("✅ ข้อ 1: ถูกต้อง")
         score += 1
     else:
-        st.error(f"❌ ข้อ 1: ยังไม่ถูกต้อง (คุณตอบ '{u_ans1}')")
+        st.error(f"❌ ข้อ 1: ไม่ถูกต้อง (คุณตอบ '{u_ans1}')")
 
 
     if u_ans2 == "fish":
         st.success("✅ ข้อ 2: ถูกต้อง")
         score += 1
     else:
-        st.error(f"❌ ข้อ 2: ยังไม่ถูกต้อง (คุณตอบ '{u_ans2}')")
+        st.error(f"❌ ข้อ 2: ไม่ถูกต้อง (คุณตอบ '{u_ans2}')")
         
     if u_ans3 == "bible":
         st.success("✅ ข้อ 3: ถูกต้อง")
         score += 1
     else:
-        st.error(f"❌ ข้อ 3: ยังไม่ถูกต้อง (คุณตอบ '{u_ans3}')")
+        st.error(f"❌ ข้อ 3: ไม่ถูกต้อง (คุณตอบ '{u_ans3}')")
+   
     if u_ans4 == "corn":
         st.success("✅ ข้อ 4: ถูกต้อง")
         score += 1
     else:
-        st.error(f"❌ ข้อ 4: ยังไม่ถูกต้อง (คุณตอบ '{u_ans4}')")
+        st.error(f"❌ ข้อ 4: ไม่ถูกต้อง (คุณตอบ '{u_ans4}')")
 
 
 
@@ -73,7 +74,7 @@ st.button(" เริ่ม ", on_click=reset_game)
 
 
 if "start" in st.session_state and not st.session_state.get("is_ended", False):
-    time_left = int(20 - (time.time() - st.session_state.start))
+    time_left = int(30 - (time.time() - st.session_state.start))
 
     if time_left > 0:
         st.error(f"⏳ เหลือเวลา: {time_left} วินาที")
@@ -101,12 +102,11 @@ ans4 = st.text_input(
     "ข้อ 4: I like  _orn. ",
     value=st.session_state.ans4_val,
 )
+
 st.session_state.ans1_val = ans1
 st.session_state.ans2_val = ans2
 st.session_state.ans3_val = ans3
 st.session_state.ans4_val = ans4
-
-
 
 
 if "start" in st.session_state and not st.session_state.get("is_ended", False):
@@ -122,6 +122,6 @@ if st.session_state.get("is_ended", False):
     show_result_dialog(ans1, ans2, ans3, ans4)
 
 st.divider()
-st.write("นางจิรัศมิ์ จิกเวียง เลขที่ 23ม.4/2")
+st.write("นายจิรัศมิ์ จิกเวียง เลขที่ 23 ม.4/2")
 
 
