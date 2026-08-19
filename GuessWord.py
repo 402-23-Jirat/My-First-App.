@@ -28,8 +28,8 @@ def show_result_dialog(ans1, ans2):
 
     u_ans1 = ans1.strip().lower()
     u_ans2 = ans2.strip().lower()
-    u_ans1 = ans3.strip().lower()
-    u_ans2 = ans4.strip().lower()
+    u_ans3 = ans3.strip().lower()
+    u_ans4 = ans4.strip().lower()
 
 
     if u_ans1 == "apple":
@@ -98,13 +98,13 @@ ans3 = st.text_input(
     value=st.session_state.ans3_val,
 )
 ans4 = st.text_input(
-    "ข้อ 4: I like _orn. ",
+    "ข้อ 4: I like  _orn. ",
     value=st.session_state.ans4_val,
 )
 st.session_state.ans1_val = ans1
 st.session_state.ans2_val = ans2
-st.session_state.ans1_val = ans3
-st.session_state.ans2_val = ans4
+st.session_state.ans3_val = ans3
+st.session_state.ans4_val = ans4
 
 
 
