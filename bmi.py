@@ -4,12 +4,12 @@ st.markdown("# :red[คำนวณค่าดัชนีมวลกาย BM
 st.write("กรอกข้อมูลน้ำหนักและส่วนสูง")
 
 weight = st.number_input("กรอกน้ำหนัก (กิโลกรัม):", minvalue=1.0, value=1.0)
-height_m = st.number_input("กรอกความสูง (เซนติเมตร):", minvalue=1.0, value=1.0)
+height_cm = st.number_input("กรอกความสูง (เซนติเมตร):", minvalue=1.0, value=1.0)
 
 if st.button("ผลที่ได้"):
 
-height_m = height_cm / 100
-bmi = weight / (height_m ** 2)
+height_cm = height_cm / 100
+bmi = weight / (height_cm ** 2)
 
 st.write("---")
 st.header(f"ค่า BMi คือ:{bmi:.2f}**")
