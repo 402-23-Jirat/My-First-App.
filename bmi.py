@@ -3,8 +3,8 @@ import streamlit as st
 st.markdown("# :red[คำนวณค่าดัชนีมวลกาย BMI]")
 st.write("กรอกข้อมูลน้ำหนักและส่วนสูง")
 
-weight = st.number_input("กรอกน้ำหนัก (กิโลกรัม):", minvalue=1.0, value=1.0)
-height_cm = st.number_input("กรอกความสูง (เซนติเมตร):", minvalue=1.0, value=1.0)
+weight = st.number_input("กรอกน้ำหนัก (กิโลกรัม):", min_value=1.0, value=1.0)
+height_cm = st.number_input("กรอกความสูง (เซนติเมตร):", min_value=1.0, value=1.0)
 
 if st.button("ผลที่ได้"):
  
