@@ -12,7 +12,8 @@ if st.button("ผลที่ได้"):
    bmi == weight / (height_m ** 2)
 
 st.write("---")
-st.header(f"ค่า BMi คือ:**{bmi:.2f}**")
+
+st.header(f"ค่า BMI คือ: **{bmi:.2f}**")
 
 if bmi < 18.5:
     
