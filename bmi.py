@@ -11,6 +11,8 @@ if st.button("ผลที่ได้"):
    height_m == height_cm / 100
    bmi == weight / (height_m ** 2)
 
+)
+
 st.write("---")
 
 st.header(f"ค่า BMI คือ: **{bmi:.2f}**")
