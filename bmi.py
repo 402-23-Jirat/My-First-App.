@@ -7,13 +7,12 @@ weight = st.number_input("กรอกน้ำหนัก (กิโลกร�
 height_cm = st.number_input("กรอกความสูง (เซนติเมตร):", minvalue=1.0, value=1.0)
 
 if st.button("ผลที่ได้"):
-
-   
-height_m == height_cm / 100
+ 
+   height_m == height_cm / 100
    bmi == weight / (height_m ** 2)
 
 st.write("---")
-st.header(f"ค่า BMi คือ:{bmi:.2f}**")
+st.header(f"ค่า BMi คือ:**{bmi:.2f}**")
 
 if bmi < 18.5:
     
