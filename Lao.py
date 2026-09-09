@@ -46,34 +46,38 @@ def show_result_dialog(ans1, ans2, ans3, ans4, ans5):
         score += 1
     else:
         st.error(f"❌ ข้อ 2: ไม่ถูกต้อง (คุณตอบ '{u_ans2}')")
-        
+
+    
     if u_ans3 == "ม่วง":
         st.success("✅  ถูกต้อง")
         score += 1
     else:
         st.error(f"❌ ข้อ 3: ไม่ถูกต้อง (คุณตอบ '{u_ans3}')")
-   
+
+    
     if u_ans4 == "ฟ้า":
         st.success("✅ ถูกต้อง")
         score += 1
     else:
         st.error(f"❌ ข้อ 4: ไม่ถูกต้อง (คุณตอบ '{u_ans4}')")
 
-if u_ans5 == "น้ำตาล":
+    
+    if u_ans5 == "น้ำตาล":
         st.success("✅ ข้อ 5: ถูกต้อง")
         score += 1
     else:
-        st.error(f"❌  ไม่ถูกต้อง (คุณตอบ '{u_ans5}')")
-
-
+        st.error(f"❌ ไม่ถูกต้อง (คุณตอบ '{u_ans5}')")
 
 
     st.info(f" ได้คะแนนรวม: {score} คะแนน")
 
-    if score == 4:
-        st.success(" Piece of Cake!")
-    else:
-        st.error(" ไอลาบ ")
+    if score == 5:
+        st.success(" ราชา")
+    elif 1 ≥ score ≥ 4 :
+        st.Success(" อีกหน่อย Gng ")
+    else :
+        st.error(" โง่ ")
+
 
 st.divider()
 
