@@ -4,7 +4,7 @@ st.markdown("# :red[คำนวณค่าดัชนีมวลกาย BM
 st.write("กรอกข้อมูลน้ำหนักและส่วนสูง")
 
 weight = st.number_input("กรอกน้ำหนัก (กิโลกรัม):", minvalue=1.0, value=1.0)
-height_cm = st.number_input("กรอกความสูง (เซนติเมตร):", minvalue=1.0, value=1.0)
+height_m = st.number_input("กรอกความสูง (เซนติเมตร):", minvalue=1.0, value=1.0)
 
 if st.button("ผลที่ได้"):
 
