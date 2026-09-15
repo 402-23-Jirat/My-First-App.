@@ -13,6 +13,9 @@ if "ans4_val" not in st.session_state:
 if "ans5_val" not in st.session_state:
     st.session_state.ans5_val = ""
 
+if "is_ended" not in st.session_state:
+    st.session_state.is_ended = False
+
 def reset_game():
     st.session_state.ans1_val = ""  
     st.session_state.ans2_val = ""  
@@ -72,11 +75,11 @@ def show_result_dialog(ans1, ans2, ans3, ans4, ans5):
     st.info(f" ได้คะแนนรวม: {score} คะแนน")
 
     if score == 5:
-        st.success(" ราชา")
-    elif 1 ≥ score ≥ 4 :
-        st.Success(" อีกหน่อย Gng ")
+        st.success(" ราชา💪😍")
+    elif 1 <= score <= 4 :
+        st.success(" อีกนิดเดียวพยายามหน่อย🥀 ")
     else :
-        st.error(" โง่ ")
+        st.error(" ถามจริง🤡 ")
 
 
 st.divider()
