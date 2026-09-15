@@ -1,7 +1,7 @@
 import random
 import streamlit as st
  
-st.title(" เกมทายสีผสม")
+st.title(" เกมทายสีผสมระดับราชาอนุบาล😎")
  
 QUESTIONS = [
     ("แดง + เหลือง", "ส้ม"),
