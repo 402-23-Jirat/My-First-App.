@@ -1,7 +1,19 @@
 import random
 import streamlit as st
  
-st.title(" เกมทายสีผสมระดับราชาอนุบาล😎")
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #000000;
+        color: #FFFFFF;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+ 
+st.title(" เกมทายสีผสม")
  
 QUESTIONS = [
     ("แดง + เหลือง", "ส้ม"),
@@ -13,12 +25,12 @@ QUESTIONS = [
  
 COLOR_MAP = {
     "แดง": "red",
-    "เหลือง": "orange",  
+    "เหลือง": "orange",   
     "น้ำเงิน": "blue",
     "เขียว": "green",
     "ม่วง": "violet",
     "ฟ้า": "blue",
-    "น้ำตาล": "gray",   
+    "น้ำตาล": "gray",    
 }
  
  
@@ -94,7 +106,7 @@ def show_result_dialog(ans1, ans2, ans3, ans4, ans5):
     else:
         st.error(" ถามจริง🤡 ")
  
-    if st.button("เอาอีกรอบดิ😡"):
+    if st.button("เล่นอีกครั้ง"):
         reset_game()
         st.rerun()
  
