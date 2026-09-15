@@ -13,7 +13,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
  
-st.title(" เกมทายสีผสม")
+st.title(" เกมทายสีผสมระดับราชันย์อนุบาล😎")
  
 QUESTIONS = [
     ("แดง + เหลือง", "ส้ม"),
