@@ -1,7 +1,17 @@
+import random
 import streamlit as st
-
+ 
 st.title(" เกมทายสีผสม")
-
+ 
+# โจทย์ทั้งหมด: (คำถาม, คำตอบที่ถูก)
+QUESTIONS = [
+    ("แดง + เหลือง", "ส้ม"),
+    ("น้ำเงิน + เหลือง", "เขียว"),
+    ("แดง + น้ำเงิน", "ม่วง"),
+    ("น้ำเงิน + เขียว", "ฟ้า"),
+    ("แดง + เหลือง + น้ำเงิน", "น้ำตาล"),
+]
+ 
 if "ans1_val" not in st.session_state:
     st.session_state.ans1_val = ""
 if "ans2_val" not in st.session_state:
@@ -12,117 +22,97 @@ if "ans4_val" not in st.session_state:
     st.session_state.ans4_val = ""
 if "ans5_val" not in st.session_state:
     st.session_state.ans5_val = ""
-
 if "is_ended" not in st.session_state:
     st.session_state.is_ended = False
-
+if "shuffled_questions" not in st.session_state:
+    shuffled = QUESTIONS.copy()
+    random.shuffle(shuffled)
+    st.session_state.shuffled_questions = shuffled
+ 
+ 
 def reset_game():
-    st.session_state.ans1_val = ""  
-    st.session_state.ans2_val = ""  
+    st.session_state.ans1_val = ""
+    st.session_state.ans2_val = ""
     st.session_state.ans3_val = ""
     st.session_state.ans4_val = ""
-    st.session_state.ans5_val = ""  
-
-
-
+    st.session_state.ans5_val = ""
+    st.session_state.is_ended = False
+    shuffled = QUESTIONS.copy()
+    random.shuffle(shuffled)
+    st.session_state.shuffled_questions = shuffled
+ 
+ 
 @st.dialog(" ง่ายว่ะพี่น้อง")
 def show_result_dialog(ans1, ans2, ans3, ans4, ans5):
     st.balloons()
     score = 0
-
-    u_ans1 = ans1.strip().lower()
-    u_ans2 = ans2.strip().lower()
-    u_ans3 = ans3.strip().lower()
-    u_ans4 = ans4.strip().lower()
-    u_ans5 = ans5.strip().lower()
-
-    
-    if u_ans1 == "ส้ม":
-        st.success("✅ ถูกต้อง")
-        score += 1
-    else:
-        st.error(f"❌ ผิดได้ไงเด็กอนุบาลยังตอบถูกเลย (คุณตอบ '{u_ans1}')")
-
-
-    if u_ans2 == "เขียว":
-        st.success("✅  ถูกต้อง")
-        score += 1
-    else:
-        st.error(f"❌ ข้อ 2: ไม่ถูกต้อง (คุณตอบ '{u_ans2}')")
-
-    
-    if u_ans3 == "ม่วง":
-        st.success("✅  ถูกต้อง")
-        score += 1
-    else:
-        st.error(f"❌ ข้อ 3: ไม่ถูกต้อง (คุณตอบ '{u_ans3}')")
-
-    
-    if u_ans4 == "ฟ้า":
-        st.success("✅ ถูกต้อง")
-        score += 1
-    else:
-        st.error(f"❌ ข้อ 4: ไม่ถูกต้อง (คุณตอบ '{u_ans4}')")
-
-    
-    if u_ans5 == "น้ำตาล":
-        st.success("✅ ข้อ 5: ถูกต้อง")
-        score += 1
-    else:
-        st.error(f"❌ ไม่ถูกต้อง (คุณตอบ '{u_ans5}')")
-
-
+ 
+    user_answers = [ans1, ans2, ans3, ans4, ans5]
+    questions = st.session_state.shuffled_questions
+ 
+    for i, ((question_text, correct_answer), user_answer) in enumerate(
+        zip(questions, user_answers), start=1
+    ):
+        u_ans = user_answer.strip().lower()
+        if u_ans == correct_answer.lower():
+            st.success(f"✅ ข้อ {i} ({question_text}): ถูกต้อง")
+            score += 1
+        else:
+            st.error(
+                f"❌ ข้อ {i} ({question_text}): ไม่ถูกต้อง (คุณตอบ '{u_ans}')"
+            )
+ 
     st.info(f" ได้คะแนนรวม: {score} คะแนน")
-
+ 
     if score == 5:
         st.success(" ราชา💪😍")
-    elif 1 <= score <= 4 :
+    elif 1 <= score <= 4:
         st.success(" อีกนิดเดียวพยายามหน่อย🥀 ")
-    else :
+    else:
         st.error(" ถามจริง🤡 ")
-
-
+ 
+    if st.button("เล่นอีกครั้ง"):
+        reset_game()
+        st.rerun()
+ 
+ 
 st.divider()
-
-
+ 
+q1, q2, q3, q4, q5 = st.session_state.shuffled_questions
+ 
 ans1 = st.text_input(
-    "\033[32m" + " แดง + เหลือง ",
+    f" {q1[0]} ",
     value=st.session_state.ans1_val,
 )
 ans2 = st.text_input(
-    " น้ำเงิน + เหลือง ",
+    f" {q2[0]} ",
     value=st.session_state.ans2_val,
 )
-
 ans3 = st.text_input(
-    "แดง + น้ำเงิน ",
+    f" {q3[0]} ",
     value=st.session_state.ans3_val,
 )
 ans4 = st.text_input(
-    "น้ำเงิน + เขียว",
+    f" {q4[0]} ",
     value=st.session_state.ans4_val,
 )
-
 ans5 = st.text_input(
-    " แดง + เหลือง + น้ำเงิน",
+    f" {q5[0]} ",
     value=st.session_state.ans5_val,
 )
-
+ 
 st.session_state.ans1_val = ans1
 st.session_state.ans2_val = ans2
 st.session_state.ans3_val = ans3
 st.session_state.ans4_val = ans4
 st.session_state.ans5_val = ans5
-
-if "start" in st.session_state and not st.session_state.get("is_ended", False):
+ 
+if not st.session_state.is_ended:
     if st.button(" Confirmed? "):
         st.session_state.is_ended = True
         st.rerun()
-
-
-
-if st.session_state.get("is_ended", False):
+ 
+if st.session_state.is_ended:
     show_result_dialog(ans1, ans2, ans3, ans4, ans5)
-
+ 
 st.divider()
-
