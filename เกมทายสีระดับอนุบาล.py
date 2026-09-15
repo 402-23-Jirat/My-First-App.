@@ -8,6 +8,16 @@ st.markdown(
         background-color: #000000;
         color: #FFFFFF;
     }
+    .stButton > button {
+        background-color: #FFFFFF;
+        color: #000000;
+        border: 1px solid #FFFFFF;
+    }
+    .stButton > button:hover {
+        background-color: #DDDDDD;
+        color: #000000;
+        border: 1px solid #FFFFFF;
+        }
     </style>
     """,
     unsafe_allow_html=True,
