@@ -12,6 +12,30 @@ QUESTIONS = [
     ("แดง + เหลือง + น้ำเงิน", "น้ำตาล"),
 ]
  
+COLOR_MAP = {
+    "แดง": "red",
+    "เหลือง": "orange",  
+    "น้ำเงิน": "blue",
+    "เขียว": "green",
+    "ม่วง": "violet",
+    "ฟ้า": "blue",
+    "น้ำตาล": "gray",   
+}
+ 
+ 
+def colorize(question_text):
+    """แปลง 'แดง + เหลือง' ให้เป็น ':red[แดง] + :orange[เหลือง]'"""
+    parts = question_text.split(" + ")
+    colored_parts = []
+    for part in parts:
+        color_name = COLOR_MAP.get(part, None)
+        if color_name:
+            colored_parts.append(f":{color_name}[{part}]")
+        else:
+            colored_parts.append(part)
+    return " + ".join(colored_parts)
+ 
+ 
 if "ans1_val" not in st.session_state:
     st.session_state.ans1_val = ""
 if "ans2_val" not in st.session_state:
@@ -71,7 +95,7 @@ def show_result_dialog(ans1, ans2, ans3, ans4, ans5):
     else:
         st.error(" ถามจริง🤡 ")
  
-    if st.button("เล่นอีกครั้ง"):
+    if st.button("เอาอีกรอบดิ😡"):
         reset_game()
         st.rerun()
  
@@ -81,23 +105,23 @@ st.divider()
 q1, q2, q3, q4, q5 = st.session_state.shuffled_questions
  
 ans1 = st.text_input(
-    f" {q1[0]} ",
+    f" {colorize(q1[0])} ",
     value=st.session_state.ans1_val,
 )
 ans2 = st.text_input(
-    f" {q2[0]} ",
+    f" {colorize(q2[0])} ",
     value=st.session_state.ans2_val,
 )
 ans3 = st.text_input(
-    f" {q3[0]} ",
+    f" {colorize(q3[0])} ",
     value=st.session_state.ans3_val,
 )
 ans4 = st.text_input(
-    f" {q4[0]} ",
+    f" {colorize(q4[0])} ",
     value=st.session_state.ans4_val,
 )
 ans5 = st.text_input(
-    f" {q5[0]} ",
+    f" {colorize(q5[0])} ",
     value=st.session_state.ans5_val,
 )
  
@@ -116,3 +140,4 @@ if st.session_state.is_ended:
     show_result_dialog(ans1, ans2, ans3, ans4, ans5)
  
 st.divider()
+ 
