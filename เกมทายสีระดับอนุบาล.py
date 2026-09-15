@@ -94,7 +94,7 @@ def show_result_dialog(ans1, ans2, ans3, ans4, ans5):
             score += 1
         else:
             st.error(
-                f"❌ ข้อ {i} ({question_text}): "ผิดได้ไงก่อน")"
+                f"❌ ข้อ {i} ({question_text}): "ผิดได้ไงก่อน)"
             )
  
     st.info(f" ได้คะแนนรวม: {score} คะแนน")
